@@ -13,7 +13,7 @@
       </pluginExecutionFilter>
       <action>
         <configurator>
-          <id>nl.topicus.m2e.settings.configurator</id>
+          <id>com.bsiag.m2e.settings.configurator</id>
         </configurator>
       </action>
     </pluginExecution>

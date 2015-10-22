@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="nl.topicus.m2e.settings.feature"
+      id="com.bsiag.m2e.settings.feature"
       label="Eclipse Settings for M2E"
       version="2.0.7.qualifier"
       provider-name="Topicus Onderwijs"
-      plugin="nl.topicus.m2e.settings">
+      plugin="com.bsiag.m2e.settings">
 
    <description url="https://github.com/topicusonderwijs/m2e-settings">
-      Provides consistent Eclipse IDE settings for your team from a Maven POM. The M2E 
+      Provides consistent Eclipse IDE settings for your team from a Maven POM. The M2E
 Settings plugin will copy formatting, findbugs and other plugin settings from a
 centrally maintained settings JAR to your workspace and configure each project
 to use those settings.
@@ -82,7 +82,7 @@ SOFTWARE.
    </requires>
 
    <plugin
-         id="nl.topicus.m2e.settings"
+         id="com.bsiag.m2e.settings"
          download-size="0"
          install-size="0"
          version="0.0.0"

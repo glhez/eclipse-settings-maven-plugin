@@ -6,7 +6,7 @@
 			point="org.eclipse.m2e.core.projectConfigurators">
 		<configurator
 				class="nl.topicus.m2e.settings.internal.ProjectSettingsConfigurator"
-				id="nl.topicus.m2e.settings.configurator"
+				id="com.bsiag.m2e.settings.configurator"
 				name="JDT Settings"
 				runsAfter="org.eclipse.m2e.jdt.javaConfigurator">
 		</configurator>
