@@ -120,9 +120,9 @@ else
     echo "" >> target/release.log
 fi
 
-printf "Performing: 'mv nl.topicus.m2e.settings.repository/target/repository ./site' "
-echo "mv nl.topicus.m2e.settings.repository/target/repository ./site" >> target/release.log;
-if ! mv nl.topicus.m2e.settings.repository/target/repository ./site >> target/release.log;
+printf "Performing: 'mv com.bsiag.m2e.settings.repository/target/repository ./site' "
+echo "mv com.bsiag.m2e.settings.repository/target/repository ./site" >> target/release.log;
+if ! mv com.bsiag.m2e.settings.repository/target/repository ./site >> target/release.log;
 then
     echo "FAILED...
 
@@ -249,7 +249,7 @@ fi
 echo "
 Done!
 
-All you need to do is check whether the release is OK, and then publish 
+All you need to do is check whether the release is OK, and then publish
 the artefacts by issuing the following command:
 
     git push

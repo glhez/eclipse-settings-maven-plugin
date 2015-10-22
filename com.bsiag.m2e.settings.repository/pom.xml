@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>nl.topicus.m2e</groupId>
-		<artifactId>nl.topicus.m2e.settings.parent</artifactId>
+		<groupId>com.bsiag.m2e</groupId>
+		<artifactId>com.bsiag.m2e.settings.parent</artifactId>
 		<version>2.0.6-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>nl.topicus.m2e.settings.repository</artifactId>
+	<artifactId>com.bsiag.m2e.settings.repository</artifactId>
 	<packaging>eclipse-repository</packaging>
 	<name>Update site</name>
 </project>
