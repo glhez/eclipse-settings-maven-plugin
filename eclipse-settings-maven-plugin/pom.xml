@@ -14,9 +14,9 @@
   <name>Eclipse Settings Maven Plugin</name>
 
   <properties>
-    <mavenVersion>3.3.3</mavenVersion>
+    <mavenVersion>3.5.0</mavenVersion>
     <mavenPluginAnnotationsVersion>3.3</mavenPluginAnnotationsVersion>
-    <plexusUtilsVersion>3.0.20</plexusUtilsVersion>
+    <plexusUtilsVersion>3.0.24</plexusUtilsVersion>
     <slf4jVersion>1.6.2</slf4jVersion>
   </properties>
 
