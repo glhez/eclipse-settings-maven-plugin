@@ -212,8 +212,7 @@ public class ProjectSettingsConfigurator extends AbstractMojo {
         }
         updatedFiles.add(target);
       } catch (final IOException e) {
-        throw new MojoExecutionException(String.format("Unable to copy %s to %s", location, target.getAbsolutePath()),
-            e);
+        LOGGER.warn("Unable to copy {} to {} caused by {}", location, target.getAbsolutePath(), e.getMessage());
       } finally {
         for (final File file : updatedFiles) {
           buildContext.refresh(file);
