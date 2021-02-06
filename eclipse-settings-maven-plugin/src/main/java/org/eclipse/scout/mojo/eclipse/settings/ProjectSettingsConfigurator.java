@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -120,27 +121,18 @@ public class ProjectSettingsConfigurator extends AbstractMojo {
     try {
       if (skip) {
         getLog().info("Skipping project settings configuration.");
-      } else if (configureEclipseMeta()) {
-        getLog().info("Project configured.");
+        return;
+      }
+      if (validateMojo()) {
+        try (ResourceResolver resolver = getResourceResolver()) {
+          writeAdditionalConfig(resolver, filterAdditionalConfig());
+        }
+        getLog().info("Project configured");
       } else {
-        getLog().error("Project not configured.");
+        throw new MojoFailureException("project not configured due to errors");
       }
     } catch (final IOException e) {
       getLog().error("Failure during settings configuration", e);
-    }
-  }
-
-  private boolean configureEclipseMeta() throws IOException, MojoExecutionException {
-    if (additionalConfig == null || additionalConfig.length <= 0) {
-      getLog().warn("No settings specified.");
-      return false;
-    }
-
-    validateMojo();
-    try (ResourceResolver resolver = getResourceResolver()) {
-      EclipseSettingsFile[] filteredAdditionalConfig = filterAdditionalConfig();
-      writeAdditionalConfig(resolver, filteredAdditionalConfig);
-      return true;
     }
   }
 
@@ -163,10 +155,15 @@ public class ProjectSettingsConfigurator extends AbstractMojo {
     return resolver;
   }
 
-  private void validateMojo() throws MojoExecutionException {
+  private boolean validateMojo() throws MojoExecutionException {
     this.source = StringUtils.trimToNull(source);
     if (source == null) {
       throw new MojoExecutionException("<source> is missing.");
+    }
+
+    if (additionalConfig == null || additionalConfig.length < 1) {
+      addError("No <additionalConfig> provided");
+      return false;
     }
 
     boolean fail = false;
@@ -179,23 +176,44 @@ public class ProjectSettingsConfigurator extends AbstractMojo {
       }
 
       if (config.getLocation() == null) {
-        getLog().error(
-                       "Invalid <location> in AdditionalConfig[" + index + "]"
-                           + formatInputLocation(config.getInputLocation()) + ".");
+        addError(
+                 "Invalid <location> in AdditionalConfig[%d]%s.",
+                   index,
+                   formatInputLocation(config.getInputLocation()));
         fail = true;
       }
       if (config.getName() == null) {
-        getLog().error(
-                       "Invalid <name> in AdditionalConfig[" + index + "]"
-                           + formatInputLocation(config.getInputLocation()) + ".");
+        addError(
+                 "Invalid <name> in AdditionalConfig[%d]%s.",
+                   index,
+                   formatInputLocation(config.getInputLocation()));
         fail = true;
       }
       ++index;
     }
 
-    if (fail) {
-      throw new MojoExecutionException("One or more errors were reported");
+    return !fail;
+  }
+
+  private void addError(String format, Object... params) {
+    addMessage(format, BuildContext.SEVERITY_ERROR, params);
+  }
+
+  private void addMessage(String format, int severity, Object... params) {
+    String message;
+    Throwable throwable = null;
+    if (params.length == 0) {
+      message = format;
+    } else {
+      int n = params.length - 1;
+      if (n >= 0 && params[n] instanceof Throwable) {
+        message = String.format(format, Arrays.copyOf(params, n));
+        throwable = (Throwable) params[n];
+      } else {
+        message = String.format(format, params);
+      }
     }
+    buildContext.addMessage(project.getFile(), 0, 0, message, severity, throwable);
   }
 
   private EclipseSettingsFile[] filterAdditionalConfig() {
