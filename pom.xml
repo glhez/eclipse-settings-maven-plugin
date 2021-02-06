@@ -20,9 +20,9 @@
   </scm>
 
   <distributionManagement>
-    <repository>         <id>glhez-m2-repo-releases</id>  <url>${publish.directory.releases}</url>  </repository>
-    <snapshotRepository> <id>glhez-m2-repo-snapshots</id> <url>${publish.directory.snapshots}</url> </snapshotRepository>
-    <site>               <id>glhez-m2-repo-site</id>      <url>${publish.directory.site}</url>      </site>
+    <repository>         <id>glhez-m2-repo-releases</id>  <url>${publish.directory.releases}</url>                           </repository>
+    <snapshotRepository> <id>glhez-m2-repo-snapshots</id> <url>${publish.directory.snapshots}</url>                          </snapshotRepository>
+    <site>               <id>glhez-m2-repo-site</id>      <url>${publish.directory.site}/eclipse-settings-maven-plugin</url> </site>
   </distributionManagement>
 
   <modules>
