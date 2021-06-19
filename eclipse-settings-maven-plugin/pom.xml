@@ -16,13 +16,13 @@
 
   <properties>
     <mavenVersion>3.6.3</mavenVersion>
-    <mavenPluginAnnotationsVersion>3.6.0</mavenPluginAnnotationsVersion>
+    <mavenPluginAnnotationsVersion>3.6.1</mavenPluginAnnotationsVersion>
     <plexusUtilsVersion>3.3.0</plexusUtilsVersion>
 
     <dep.commons-lang3.version>3.12.0</dep.commons-lang3.version>
-    <dep.junit-bom.version>5.7.1</dep.junit-bom.version>
-    <dep.mockito-core.version>3.8.0</dep.mockito-core.version>
-    <dep.assertj-core.version>3.19.0</dep.assertj-core.version>
+    <dep.junit-bom.version>5.7.2</dep.junit-bom.version>
+    <dep.mockito-core.version>3.11.1</dep.mockito-core.version>
+    <dep.assertj-core.version>3.20.1</dep.assertj-core.version>
     <dep.memoryfilesystem.version>2.1.0</dep.memoryfilesystem.version>
   </properties>
 
@@ -45,7 +45,7 @@
     <dependency> <groupId>org.sonatype.plexus</groupId>           <artifactId>plexus-build-api</artifactId>         <version>0.0.7</version>                            </dependency>
     <dependency> <groupId>org.apache.maven.plugin-tools</groupId> <artifactId>maven-plugin-annotations</artifactId> <version>${mavenPluginAnnotationsVersion}</version> <scope>provided</scope> </dependency>
 
-    <dependency> <groupId>org.apache.commons</groupId>       <artifactId>commons-lang3</artifactId>                    </dependency>
+    <dependency> <groupId>org.apache.commons</groupId>   <artifactId>commons-lang3</artifactId>                        </dependency>
     <dependency> <groupId>org.junit.jupiter</groupId>    <artifactId>junit-jupiter</artifactId>    <scope>test</scope> </dependency>
     <dependency> <groupId>org.mockito</groupId>          <artifactId>mockito-core</artifactId>     <scope>test</scope> </dependency>
     <dependency> <groupId>org.assertj</groupId>          <artifactId>assertj-core</artifactId>     <scope>test</scope> </dependency>
@@ -58,7 +58,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-plugin-plugin</artifactId>
-          <version>3.6.0</version>
+          <version>3.6.1</version>
         </plugin>
       </plugins>
     </pluginManagement>
